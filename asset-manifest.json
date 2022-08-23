@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mercury-messenger/static/css/main.12fd5dad.css",
+    "main.js": "/mercury-messenger/static/js/main.2510128a.js",
+    "index.html": "/mercury-messenger/index.html",
+    "main.12fd5dad.css.map": "/mercury-messenger/static/css/main.12fd5dad.css.map",
+    "main.2510128a.js.map": "/mercury-messenger/static/js/main.2510128a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.12fd5dad.css",
+    "static/js/main.2510128a.js"
+  ]
+}
