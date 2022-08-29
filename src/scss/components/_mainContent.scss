@@ -1,0 +1,55 @@
+.content {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    height: 100vh;
+    width: 100vw;
+
+    @include laptop {
+        grid-template-columns: 45% 1fr;
+    }
+
+    @include tablet {
+        grid-template-columns: 1fr;
+    }
+
+    &__messages {
+        @include tablet {
+            position: absolute;
+            width: 100vw;
+            left: 100vw;
+            display: none;
+        }
+
+        &[toopen='0'] {
+            animation: toCloseChat 1s 1;
+            left: 100vw;
+        }
+
+        &[toopen='1'] {
+            animation: toOpenChat 0.5s 1;
+            left: 0; 
+            display: block;
+        }
+    
+        @keyframes toOpenChat {
+            0% {
+                left: 100vw;
+                display: block;
+            }
+            100% {
+                left: 0;
+            }
+        }
+    
+        @keyframes toCloseChat {
+            0% {
+                left: 0;
+                display: block;
+            }
+            100% {
+                left: 100vw;
+                display: block;
+            }
+        }
+    }
+}

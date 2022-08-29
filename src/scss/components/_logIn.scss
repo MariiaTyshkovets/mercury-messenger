@@ -1,0 +1,48 @@
+.login {
+    background-color: $primary-color-white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 1rem;
+    box-shadow: currentColor 3px 6px 15px;
+
+    @include phone {
+        padding: 20px;
+    }
+
+    .sign-in {
+        @include sign;
+    }
+
+    .connection {
+        width: 300px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 30px;
+
+        &__item {
+            cursor: pointer;
+            padding: 10px 15px;
+            height: 42px;
+            display: grid;
+            grid-template-columns: 25px 1fr;
+            gap: 20px;
+            align-items: center;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: $background-color;
+            }
+        }
+
+        img {
+            max-height: 100%;
+        }
+    }
+
+    footer {
+        @include sign-in-up-footer;
+    }
+}

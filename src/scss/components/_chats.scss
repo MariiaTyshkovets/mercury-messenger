@@ -1,0 +1,66 @@
+.chats {
+    background-color: $background-color;
+    border-right: 2px $border-color solid;
+    height: 100vh;
+    $padding: 20px;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+
+    &__header {
+        @include header;
+
+        .user {
+            margin-bottom: 30px;
+
+            
+        }
+    } 
+    
+    &__search {
+        box-sizing: border-box;
+        background-color: $background-color-lighter;
+        border-radius: 25px;
+        height: 45px;
+        padding: 0 13px;
+        border: 2px solid $border-color;
+        display: flex;
+        align-items: center;
+        
+        .search {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            gap: 10px; 
+        } 
+
+        input {
+            width: 100%;
+            opacity: 0.7;
+
+            &:hover, &:focus {
+                opacity: 1;
+            }
+        }
+
+        img {
+            width: 16px;
+            opacity: 0.7;
+
+            &:hover   {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__main {
+        background-color: $primary-color-white;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+
+    &__title {
+        padding: $padding;
+        color: $secondary-color-blue;
+    }
+}

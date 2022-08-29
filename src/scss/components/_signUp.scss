@@ -1,0 +1,20 @@
+.registration {
+    background-color: $primary-color-white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 1rem;
+    box-shadow: currentColor 3px 6px 15px;
+
+    @include phone {
+        padding: 20px;
+    }
+
+    .sign-up {
+        @include sign;
+    }
+
+    footer {
+        @include sign-in-up-footer;
+    }
+}

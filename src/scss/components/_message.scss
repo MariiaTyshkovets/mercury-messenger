@@ -1,0 +1,34 @@
+.message {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 5px 20px;
+    align-items: center;
+    padding: 10px;
+
+    &__text {
+        .container {
+            background-color: $primary-color-dark;
+            border-radius: 20px;
+            color: $primary-color-white;
+            padding: 10px 15px;
+            width: fit-content;
+        }
+    }
+
+    &__date {
+        p {
+            font-size: small;
+            color: $primary-color-dark-lighter;
+        }
+    }
+
+    &.sender {
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-end;
+        
+        .container {
+            background-color: $primary-color-dark-lighter;
+        }
+    }
+}
