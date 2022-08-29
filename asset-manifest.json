@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/mercury-messenger/static/css/main.e04ee3a7.css",
-    "main.js": "/mercury-messenger/static/js/main.63845275.js",
+    "main.css": "/mercury-messenger/static/css/main.fd395a8c.css",
+    "main.js": "/mercury-messenger/static/js/main.7b5dd2c2.js",
     "static/media/user-placeholder.png": "/mercury-messenger/static/media/user-placeholder.65f9347f9da59256b8cb.png",
     "static/media/search_icon.png": "/mercury-messenger/static/media/search_icon.fb589e8c6f60deb8f780.png",
     "static/media/fb.png": "/mercury-messenger/static/media/fb.01a470d813915c298403.png",
     "static/media/logo.png": "/mercury-messenger/static/media/logo.2d55f710bdc4654b14d4.png",
     "index.html": "/mercury-messenger/index.html",
-    "main.e04ee3a7.css.map": "/mercury-messenger/static/css/main.e04ee3a7.css.map",
-    "main.63845275.js.map": "/mercury-messenger/static/js/main.63845275.js.map"
+    "main.fd395a8c.css.map": "/mercury-messenger/static/css/main.fd395a8c.css.map",
+    "main.7b5dd2c2.js.map": "/mercury-messenger/static/js/main.7b5dd2c2.js.map"
   },
   "entrypoints": [
-    "static/css/main.e04ee3a7.css",
-    "static/js/main.63845275.js"
+    "static/css/main.fd395a8c.css",
+    "static/js/main.7b5dd2c2.js"
   ]
 }
