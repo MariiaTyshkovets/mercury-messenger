@@ -1,0 +1,22 @@
+.start-page {
+    background-color: $background-color;
+    min-height: 100vh;
+
+    &__hr {
+        width: 97%;
+        margin: 0 auto;
+        height: 1.5px;
+        background-color: $primary-color-dark;
+        color: $primary-color-dark;
+        opacity: 0.3;
+    }
+
+    &__wrapper {
+        box-sizing: border-box;
+        padding: 40px; 
+
+        @include phone {
+            padding: 20px;
+        }
+    }
+}

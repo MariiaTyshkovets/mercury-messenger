@@ -1,0 +1,22 @@
+.header {
+    padding: 20px 40px;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    gap: 1rem;
+    background-color: $background-color;
+
+    @include phone {
+        padding: 20px;
+    }
+
+    &__logo {
+        margin-top: 5px;
+        width: 30px;
+    }
+
+    h4 {
+        font-weight: 500;
+        line-height: 1;
+    }
+}

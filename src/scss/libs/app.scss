@@ -1,0 +1,55 @@
+@import "./fonts";
+@import "./reset";
+@import "./variables";
+@import "./mixins";
+@import "../components/all";
+
+h1 {
+  font-size: $heading-1-font-size;
+  line-height: $heading-1-line-height;
+}
+
+h2 {
+  font-size: $heading-2-font-size;
+  line-height: $heading-2-line-height;
+}
+
+h3 {
+  font-size: $heading-3-font-size;
+  line-height: $heading-3-line-height;
+}
+
+h4 {
+  font-size: $heading-4-font-size;
+  line-height: $heading-4-line-height;
+}
+
+h5 {
+  font-size: $heading-5-font-size;
+  line-height: $heading-5-line-height;
+}
+
+h6 {
+  font-size: $heading-6-font-size;
+  line-height: $heading-6-line-height;
+}
+
+.btn {
+  background-color: $button-color;
+  color: $primary-color-white;
+  padding: 10px 15px 12px;
+  font-size: $button-font-size;
+  line-height: $button-line-height;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-color-hover;
+    box-shadow: 2px 1px 5px $button-color-hover;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+    
+} 

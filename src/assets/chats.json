@@ -1,0 +1,207 @@
+[
+    {
+        "receiver": {
+            "id" : 1,
+            "username" : "Alla",
+            "imgUrl" : "localhost:8080"
+        },
+        "sender": {
+            "id" : 2,
+            "username" : "Mariia",
+            "imgUrl" : "localhost:8080"
+        },
+        "id": 1,
+        "messages": [
+            {
+                "user": {
+                    "id" : 1,
+                    "username" : "Alla",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Hello", 
+                "date": "2022-02-15T10:04:00.000Z",
+                "id": 1
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Hi, dear", 
+                "date": "2022-02-15T10:05:00.000Z",
+                "id": 2
+            },
+            {
+                "user": {
+                    "id" : 1,
+                    "username" : "Alla",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "How are you?", 
+                "date": "2022-02-15T10:05:00.000Z",
+                "id": 3
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "I'm good, and you?)", 
+                "date": "2022-02-15T10:08:00.000Z",
+                "id": 4
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Are you here?", 
+                "date": "2022-08-28T21:33:15.000Z",
+                "id": 4
+            }
+        ]
+    },
+    {
+        "receiver": {
+            "id" : 3,
+            "username" : "Davyd",
+            "imgUrl" : "localhost:8080"
+        },
+        "sender": {
+            "id" : 2,
+            "username" : "Mariia",
+            "imgUrl" : "localhost:8080"
+        },
+        "id": 2,
+        "messages": [
+            {
+                "user": {
+                    "id" : 3,
+                    "username" : "Davyd",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Hello", 
+                "date": "2022-08-12T10:08:00.000Z",
+                "id": 5
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Hi, dear", 
+                "date": "2022-08-12T10:08:00.000Z",
+                "id": 6
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "How are you?", 
+                "date": "2022-08-12T10:10:00.000Z",
+                "id": 7
+            },
+            {
+                "user": {
+                    "id" : 3,
+                    "username" : "Davyd",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "I'm good, and you?)", 
+                "date": "2022-08-12T10:11:00.000Z",
+                "id": 8
+            }
+        ]
+    },
+    {
+        "receiver": {
+            "id" : 4,
+            "username" : "Andrew Smith",
+            "imgUrl" : "localhost:8080"
+        },
+        "sender": {
+            "id" : 2,
+            "username" : "Mariia",
+            "imgUrl" : "localhost:8080"
+        },
+        "id": 3,
+        "messages": [
+            {
+                "user": {
+                    "id" : 4,
+                    "username" : "Andrew Smith",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Hello", 
+                "date": "2022-08-21T10:10:00.000Z",
+                "id": 9
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Hi, dear", 
+                "date": "2022-08-21T10:10:00.000Z",
+                "id": 10
+            },
+            {
+                "user": {
+                    "id" : 4,
+                    "username" : "Andrew Smith",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "How are you?", 
+                "date": "2022-08-21T10:11:00.000Z",
+                "id": 11
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "I'm good, and you?)", 
+                "date": "2022-08-21T10:12:00.000Z",
+                "id": 12
+            },
+            {
+                "user": {
+                    "id" : 4,
+                    "username" : "Andrew Smith",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Awesome, but miss u so much (((..", 
+                "date": "2022-08-21T10:13:25.000Z",
+                "id": 9
+            },
+            {
+                "user": {
+                    "id" : 2,
+                    "username" : "Mariia",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "I feel the same. I hope to see you soon :-*", 
+                "date": "2022-08-21T10:14:00.000Z",
+                "id": 10
+            },
+            {
+                "user": {
+                    "id" : 4,
+                    "username" : "Andrew Smith",
+                    "imgUrl" : "localhost:8080"
+                },
+                "message": "Love you )", 
+                "date": "2022-08-21T10:15:25.000Z",
+                "id": 9
+            }
+        ]
+    }
+]

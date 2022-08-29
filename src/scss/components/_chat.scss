@@ -1,0 +1,36 @@
+.active .chat {
+    background-color: $background-color;
+}
+
+.chat {
+    display: grid;
+    grid-template-columns: 40px 1fr max-content;
+    gap: 15px;
+    padding: 20px;
+    border-bottom: 2px solid $border-color;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: $background-color;
+    }
+
+    &__user-img {
+        display: flex;
+        align-items: center;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    h5 {
+        margin-bottom: 3px;
+    }
+
+    p {
+        font-size: smaller;
+        color: $primary-color-dark-lighter;
+    }
+}
