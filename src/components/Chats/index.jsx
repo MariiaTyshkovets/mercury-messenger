@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Chat from "../Chat";
-// import chatsFromBack from "../../assets/chats.json";
-// import user from "../../assets/user.json";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import User from "./User";
@@ -15,9 +13,10 @@ const Chats = ({openChat, users}) => {
     const [chats, setChats] = useState([]);
     const [myChats, setMyChats] = useState([]);
     const [newChats, setNewChats] = useState([]);
-    const [user, setUser] = useState(users[id-1]);
     const [newUsers, setNewUsers] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const user = users[id-1];
     
     let activeStyle = {
         fontWeight: "600"
@@ -56,8 +55,8 @@ const Chats = ({openChat, users}) => {
         let chatsWithMessages = myChats.filter(item => item.messages[0]);
         let chatsWithoutMessages = myChats.filter(item => !item.messages[0]);
         let chatsWithSort = chatsWithMessages.sort((a, b) => {
-            let dateA = new Date(a.messages[a.messages.length - 1].date);
-            let dateB = new Date(b.messages[b.messages.length - 1].date);
+            let dateA = new Date(a.messages[0].sendTime);
+            let dateB = new Date(b.messages[0].sendTime);
             return dateB - dateA
         });
         setMyChats(myChats);
@@ -65,9 +64,9 @@ const Chats = ({openChat, users}) => {
     }, [chats]);
 
     useEffect(() => {
-        let newSortChats = myChats.filter(item => item.receiver.userName.toLowerCase().includes(searchUsername.toLowerCase()));
-        let newSortUsers = users.filter(item => item.userName.toLowerCase().includes(searchUsername.toLowerCase()));
-        setNewUsers(newSortUsers);
+        let newSortChats = myChats.filter(item => item.receiver.userName.toLowerCase().includes(searchUsername.toLowerCase()) || item.sender.userName.toLowerCase().includes(searchUsername.toLowerCase()));
+        let newUsers = users.filter(item => item.userName.toLowerCase().includes(searchUsername.toLowerCase()));
+        setNewUsers(newUsers);
         setNewChats(newSortChats);
     }, [searchUsername])
 
@@ -124,7 +123,7 @@ const Chats = ({openChat, users}) => {
                     <div className="chats__items">
                         { newChats.map((chat, index) => <NavLink key={index} to={`/mercury-messenger/chats/${chat.id}`}
                             style={({ isActive }) => isActive ?  activeStyle : undefined} onClick={openChat}>
-                            <Chat {...chat} />
+                            <Chat {...chat}/>
                         </NavLink>) }
                         <div className={searchUsername === "" ? "users" : "users show"}>
                             <h4>Users</h4> 

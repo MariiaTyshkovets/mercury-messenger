@@ -8,6 +8,7 @@ const Messages = ({closeChat, users}) => {
 
     const [text, setText] = useState('');
     const [chat, setChat] = useState([]);
+    const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
     
     const id = sessionStorage.getItem("id");
@@ -28,23 +29,26 @@ const Messages = ({closeChat, users}) => {
             }
         }
 
-        axios(config).then(res => {console.log(res); setChat(res.data)})
-        .catch(err => {
+        axios(config).then(res => {
+            setChat(res.data); 
+            setMessages(res.data.messages.sort((a, b) => {
+                let dateA = new Date(a.sendTime);
+                let dateB = new Date(b.sendTime);
+                return dateA - dateB
+            }))
+        }).catch(err => {
             navigate("/mercury-messenger/error", {state: {error: err.message}})
         }).finally(() => {
-            setLoading(!loading);
+            setTimeout(() => {
+                myRef.current.scrollIntoView({ block: 'end', behavior: 'auto' });
+            }, [600])
+            setLoading(false);
         });
     }
 
     useEffect(() => {
         getMessagesFromBack();   
-    }, []);
-    
-    useEffect(() => {
-        setTimeout(() => {
-            myRef.current.scrollIntoView({ block: 'end', behavior: 'auto' });
-        }, [600])  
-    }, [chat]);
+    }, [params.id]);
 
     const handleText = (e) => {
         setText(e.target.value);
@@ -56,11 +60,16 @@ const Messages = ({closeChat, users}) => {
 
         const config = {
             method: "get",
-            url: `https://api.chucknorris.io/jokes/random`
+            url: "https://api.chucknorris.io/jokes/random",
+            headers: {
+                'Authorization': '*',
+                'Content-Type': 'application/json'
+            }
         }
 
-        axios(config).then(res => {joke = res.data.value})
-        .catch(e => console.log(e))
+        axios(config).then(res => {
+            joke = res.data.value;
+        }).catch(e => console.log(e))
         
         setTimeout (() => {
             const data = {
@@ -70,7 +79,7 @@ const Messages = ({closeChat, users}) => {
     
             const configAnswer = {
                 method: "post",
-                url: `https://mercury-messanger.herokuapp.com/chats/${params.id}/messages`,
+                url: `https://mercury-messanger.herokuapp.com/chats/${params.id}/message`,
                 headers: {
                     'Authorization': '*',
                     'Content-Type': 'application/json'
@@ -80,7 +89,7 @@ const Messages = ({closeChat, users}) => {
     
             axios(configAnswer).then(res => console.log(res))
             .catch(err => {navigate("/mercury-messenger/error", {state: {error: err.message}})}).finally(() => {
-                 navigate(`/mercury-messenger/chats/${params.id}`)
+                getMessagesFromBack();
             });    
         }, 10000)
         
@@ -96,7 +105,7 @@ const Messages = ({closeChat, users}) => {
 
         const config = {
             method: "post",
-            url: `https://mercury-messanger.herokuapp.com/chats/${params.id}/messages`,
+            url: `https://mercury-messanger.herokuapp.com/chats/${params.id}/message`,
             headers: {
                 'Authorization': '*',
                 'Content-Type': 'application/json'
@@ -133,7 +142,7 @@ const Messages = ({closeChat, users}) => {
                 </header>
                 <main className="messages__main">
                     <div className="container">
-                        {chat.messages.map((item, index) => <Message key={`${item.id}${index}`} {...item} idReceiver={chat.receiver.id}/>)}
+                        {messages.map((item, index) => <Message key={`${item.id}${index}`} {...item} idReceiver={chat.receiver.id}/>)}
                         <div ref={myRef} className="bottom" />
                     </div>
                 </main>
