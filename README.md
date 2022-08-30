@@ -1,4 +1,4 @@
-# Music&Life React App
+# Mercury Messenger
 
 The project is designed to have a chats with friends. Programmed replies after sending a message at the moment. The project will still be finalized, but you can already create an account, send messages, create chats with all existing users.
 
