@@ -2,8 +2,19 @@ import DateFnsAdapter from "@date-io/date-fns";
 
 const Chat = ({receiver, messages}) => { 
     const dateFns = new DateFnsAdapter(); 
+
+    const sortMessages = () => {
+        let sortMess = messages.sort((a, b) => {
+            let dateA = new Date(a.sendTime);
+            let dateB = new Date(b.sendTime);
+            return dateB - dateA
+        });
+        return sortMess;
+    }
     
-    let myDate = messages.length === 0 ? "" : messages[messages.length-1].date;
+    let myMessages = messages.length === 0 ? "" : sortMessages(); 
+    
+    let myDate = messages.length === 0 ? "" : myMessages[0].sendTime;
 
     if (myDate) {
         const initialDateFnsDate = dateFns.date(myDate);
@@ -17,7 +28,7 @@ const Chat = ({receiver, messages}) => {
             </div>
             <div className="chat__info">
                 <h5>{receiver.userName}</h5>
-                {messages.length === 0 ? "" : <p>{messages[messages.length-1].message}</p> }
+                {messages.length === 0 ? "" : <p>{messages[0].body}</p> }
             </div>
             <div className="chat__date">
                 <p> {myDate}</p>

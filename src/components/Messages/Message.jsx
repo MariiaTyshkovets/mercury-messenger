@@ -1,10 +1,10 @@
 import DateFnsAdapter from "@date-io/date-fns";
 
-const Message = ({user, idReceiver, message, date}) => { 
+const Message = ({sender, idReceiver, body, sendTime}) => { 
     
     const dateFns = new DateFnsAdapter(); 
     
-    let myDate = date;
+    let myDate = sendTime;
 
     if (myDate) {
         const initialDateFnsDate = dateFns.date(myDate);
@@ -14,14 +14,14 @@ const Message = ({user, idReceiver, message, date}) => {
     return (
         
         <div>
-            {user.id === idReceiver ?  
+            {sender.id === idReceiver ?  
             <div className='message'>
                 <div className="message__user-img">
                     <img src={require("../../assets/images/user-placeholder.png")} alt="user plaseholder" />
                 </div>
                 <div className="message__text">
                     <div className="container">
-                        <p>{message}</p>
+                        <p>{body}</p>
                     </div>
                 </div>
                 <div></div>
@@ -33,7 +33,7 @@ const Message = ({user, idReceiver, message, date}) => {
             <div className='message sender'>
                 <div className="message__text">
                     <div className="container">
-                        <p>{message}</p>
+                        <p>{body}</p>
                     </div>
                 </div>
                 <div className="message__date">
