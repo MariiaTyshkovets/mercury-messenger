@@ -1,0 +1,18 @@
+.empty {
+    height: 100vh;
+    grid-template-rows: max-content 1fr;
+
+    &__main {
+        background-color: $background-color-middle;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            max-height: calc(90vh);
+            max-width: 100%;
+            width: auto;
+        }
+    }
+}

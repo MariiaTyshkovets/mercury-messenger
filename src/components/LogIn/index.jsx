@@ -2,12 +2,32 @@ import 'react-phone-number-input/style.css';
 import { Link, useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-number-input";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-const LogIn = () => {
+const LogIn = ({users}) => {
 
-    const [value, setValue] = useState();
+    const [phone, setPhone] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordShown, setPasswordShown] = useState(false);
+    const [error, setError] = useState("");
 
     const navigate = useNavigate();
+    const eye = <FontAwesomeIcon icon={faEye} />;
+
+    const checkPhoneAndPassword = () => {
+        let user = users.filter(item => item.phone === phone && item.password === password);
+        if (user[0]) {
+            sessionStorage.setItem("id", user[0].id)
+            navigate("chats");
+        } else {
+            setError("The entered password or phone number is incorrect!");
+        }
+    }
+
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+      };
     
     return (
         <section className="login">
@@ -21,15 +41,27 @@ const LogIn = () => {
                         <span>Phone</span> <br />
                         <PhoneInput 
                             placeholder="Enter phone number"
-                            value={value}
-                            onChange={setValue}
+                            value={phone}
+                            onChange={setPhone}
+                            required
                         />
                     </label>
                     <label htmlFor="password"> 
                         <span>Password</span> <br />
-                        <input type="password" name="password" id="password" placeholder="Enter your password" required/>
+                        <div className='password__input'>
+                            <input type={passwordShown ? "text" : "password"} 
+                                name="password" 
+                                id="password" 
+                                placeholder="Enter your password" 
+                                value={password} 
+                                onChange={(e) => {setPassword(e.target.value); setError("")}} 
+                                required
+                            />
+                            <i onClick={togglePassword}>{eye}</i>
+                        </div>
                     </label><br />
-                    <button type="button" className="btn" onClick={() => navigate("chats")}>Sign In</button>
+                    <p className='error'>{error}</p>
+                    <button type="button" className="btn" onClick={checkPhoneAndPassword}>Sign In</button>
                 </form>
             </div>
             <div className="connection">
@@ -44,7 +76,7 @@ const LogIn = () => {
             </div>
             <footer>
                 Don't have an account?
-                <Link to="sign-up"><span> Sing Up</span></Link>
+                <Link to="sign-up"><span> Sign Up</span></Link>
             </footer>
         </section>
     )     

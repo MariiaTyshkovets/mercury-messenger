@@ -2,7 +2,7 @@
     background-color: $primary-color-white;
     max-width: 600px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 30px;
     border-radius: 1rem;
     box-shadow: currentColor 3px 6px 15px;
 
@@ -12,6 +12,25 @@
 
     .sign-up {
         @include sign;
+
+        .error:last-of-type {
+            margin-bottom: 10px;
+        }
+
+        .btn:disabled {
+            background-color: $background-color;
+            
+            &:hover {
+                box-shadow: none;
+                cursor: auto;
+            }
+        }
+
+        .password__input, .repassword__input {
+            @include showPassword;
+        }
+
+        
     }
 
     footer {

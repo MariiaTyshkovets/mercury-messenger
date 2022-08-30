@@ -3,14 +3,14 @@
     grid-template-columns: 40px 1fr;
     gap: 5px 20px;
     align-items: center;
-    padding: 10px;
+    padding: 10px 20px;
 
     &__text {
         .container {
             background-color: $primary-color-dark;
             border-radius: 20px;
             color: $primary-color-white;
-            padding: 10px 15px;
+            padding: 12px 15px;
             width: fit-content;
         }
     }

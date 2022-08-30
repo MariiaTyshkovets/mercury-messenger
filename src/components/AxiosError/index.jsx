@@ -10,10 +10,14 @@ const AxiosError = () => {
                 <div className="error__container">
                     <h3>{error}</h3>
                     <p>
-                        If you want to chat with friends 
+                        Make sure your Internet is working. <br/>If you want to chat with friends 
                         <span>
                             <Link to='/mercury-messenger/'> Sign In </Link>
-                        </span> first. Make sure your Internet is working.
+                        </span> 
+                        first. If you are already logged in, go to 
+                        <span>
+                            <Link to='/mercury-messenger/chats'> Сhats</Link>
+                        </span>.
                     </p>
                 </div>
             </section>

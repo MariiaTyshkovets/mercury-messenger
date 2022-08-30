@@ -1,14 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Chats from "../Chats";
 
-const MainContent = ({openChat, toOpenChat}) => {
-
-    // const API = "https://mercury-messanger.herokuapp.com/users";
+const MainContent = ({openChat, toOpenChat, users}) => {
     
     return (            
         <div className="content">
             <div className="content__chats">
-                <Chats openChat={openChat}/> 
+                <Chats openChat={openChat} users={users}/> 
             </div>
             <div className="content__messages" toopen={toOpenChat}>
                <Outlet /> 

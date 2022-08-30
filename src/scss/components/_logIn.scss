@@ -12,6 +12,14 @@
 
     .sign-in {
         @include sign;
+
+        .error {
+            margin-bottom: 20px;
+        }
+
+        .password__input {
+            @include showPassword;
+        }
     }
 
     .connection {
