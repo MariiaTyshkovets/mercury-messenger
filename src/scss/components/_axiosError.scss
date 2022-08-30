@@ -1,9 +1,5 @@
-.white .error__container {
-    background-color: rgb(241, 241, 241, 0.6);
-}
-
-.dark .error__container {
-    background-color: rgb(0, 0, 0, 0.6);
+.error__container {
+    background-color: $background-color;
 }
 
 .error__container {
@@ -20,22 +16,27 @@
 .error {
     min-height: 90vh;
     padding: 12% 40px 40px;
-}
+    
+    h3 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-.error h3 {
-    text-align: center;
-}
+    p {
+        font-size: 20px;
+        text-align: center;
+    }
 
-.error p {
-    font-size: 20px;
-    text-align: center;
-}
+    span {
+        font-weight: 700; 
+        font-size: 24px
+    }
 
-.error span {
-    font-weight: 600; 
-    font-size: 24px
-}
+    a {
+        color: $secondary-color-blue;
+    }
 
-.error a:hover {
-    color: rgb(240, 42, 16);
+    a:hover {
+        color: $primary-color-dark;
+    }
 }

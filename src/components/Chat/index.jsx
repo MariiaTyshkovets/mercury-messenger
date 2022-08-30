@@ -16,7 +16,7 @@ const Chat = ({receiver, messages}) => {
                 <img src={require("../../assets/images/user-placeholder.png")} alt="user plaseholder" />
             </div>
             <div className="chat__info">
-                <h5>{receiver.username}</h5>
+                <h5>{receiver.userName}</h5>
                 {messages.length === 0 ? "" : <p>{messages[messages.length-1].message}</p> }
             </div>
             <div className="chat__date">

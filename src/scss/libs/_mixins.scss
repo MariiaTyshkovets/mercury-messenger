@@ -58,6 +58,14 @@
             }
         }
 
+        .error {
+            font-size: smaller;
+            padding: 0;
+            min-height: max-content;
+            color: red;
+            text-align: center;
+        }
+
         input {
             background-color: $background-color;
             width: 100%;
@@ -68,6 +76,27 @@
                 box-shadow: 2px 1px 7px currentColor;
             }
         }
+    }
+}
+
+
+@mixin showPassword {
+    position: relative;
+
+    input[type="text"] ~ i {
+        color: $secondary-color-blue;
+    }
+
+    i {
+        position: absolute;
+        top: 6px;
+        right: 10px;
+        color: $primary-color-dark;
+    }
+
+    i:hover {
+        color: $secondary-color-blue;
+        cursor: pointer;
     }
 }
 
@@ -95,6 +124,7 @@
         gap: 20px;
         height: 55px;
         align-items: center;
+        font-weight: 500;
 
         img {
             width: 50px;
