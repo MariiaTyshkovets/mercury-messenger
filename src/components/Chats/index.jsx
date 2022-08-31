@@ -5,7 +5,7 @@ import axios from "axios";
 import User from "./User";
 import Loader from "../Loader";
 
-const Chats = ({openChat}) => {
+const Chats = ({openChat, addedMessage}) => {
 
     let id = sessionStorage.getItem("id");
     
@@ -26,8 +26,7 @@ const Chats = ({openChat}) => {
             getUser(id);
         } else {
             navigate("/mercury-messenger/")
-        }
-        
+        } 
     }, [])
     
     
@@ -49,12 +48,12 @@ const Chats = ({openChat}) => {
         axios(config).then(res => {setUser(res.data[id-1]); setUsers(res.data)})
         .catch(err => {
             navigate("/mercury-messenger/error", {state: {error: err.message}});
-        }). finally(() => {
+        }).finally(() => {
             getChatsFromBack();
         })
     }
 
-    const getChatsFromBack = () => {
+    function getChatsFromBack () {
         const config = {
             method: "get",
             url: "https://mercury-messanger.herokuapp.com/chats",
@@ -64,7 +63,7 @@ const Chats = ({openChat}) => {
             }
         }
 
-        axios(config).then(res => {console.log(res); setChats(res.data)})
+        axios(config).then(res => setChats(res.data))
         .catch(err => {
             navigate("/mercury-messenger/error", {state: {error: err.message}})
         }).finally(() => {
@@ -78,6 +77,10 @@ const Chats = ({openChat}) => {
     }
 
     useEffect(() => {
+        getChatsFromBack();
+    }, [addedMessage])
+
+    useEffect(() => {
         let myChats = chats.filter(item => item.sender.userName === user.userName);
         let chatsWithMessages = myChats.filter(item => item.messages[0]);
         let chatsWithoutMessages = myChats.filter(item => !item.messages[0]);
@@ -88,7 +91,7 @@ const Chats = ({openChat}) => {
         });
         setMyChats(myChats);
         setNewChats(chatsWithSort.concat(chatsWithoutMessages));
-    }, [chats]);
+    }, [chats, addedMessage]);
 
     const searchUser = (user) => {
         let newSortChats = myChats.filter(item => item.receiver.userName.toLowerCase().includes(user.toLowerCase()) || item.sender.userName.toLowerCase().includes(user.toLowerCase()));
@@ -114,7 +117,7 @@ const Chats = ({openChat}) => {
             data: JSON.stringify(data)
         }
 
-        axios(config).then(res => console.log(res))
+        axios(config).then()
         .catch(err => {
             navigate("/mercury-messenger/error", {state: {error: err.message}})
         }).finally(() => {
