@@ -5,24 +5,54 @@ import axios from "axios";
 import User from "./User";
 import Loader from "../Loader";
 
-const Chats = ({openChat, users}) => {
+const Chats = ({openChat}) => {
 
     let id = sessionStorage.getItem("id");
     
     const [searchUsername, setSearchUsername] = useState("");   
     const [chats, setChats] = useState([]);
+    const [user, setUser] = useState();
+    const [users, setUsers] = useState();
     const [myChats, setMyChats] = useState([]);
     const [newChats, setNewChats] = useState([]);
     const [newUsers, setNewUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const user = users[id-1];
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        if (id) {
+            setLoading(true);
+            getUser(id);
+        } else {
+            navigate("/mercury-messenger/")
+        }
+        
+    }, [])
+    
     
     let activeStyle = {
         fontWeight: "600"
     };
 
-    const navigate = useNavigate();
+    function getUser(id) {
+        
+        const config = {
+            method: "get",
+            url: `https://mercury-messanger.herokuapp.com/users`,
+            headers: {
+                'Authorization': '*',
+                'Content-Type': 'application/json'
+            }
+        }
+    
+        axios(config).then(res => {setUser(res.data[id-1]); setUsers(res.data)})
+        .catch(err => {
+            navigate("/mercury-messenger/error", {state: {error: err.message}});
+        }). finally(() => {
+            getChatsFromBack();
+        })
+    }
 
     const getChatsFromBack = () => {
         const config = {
@@ -42,12 +72,9 @@ const Chats = ({openChat, users}) => {
         });
     }
 
-    useEffect(() => {
-        getChatsFromBack();
-    }, []);
-
     const inputText = (e) => {
         setSearchUsername(e.target.value);
+        searchUser(e.target.value);
     }
 
     useEffect(() => {
@@ -63,18 +90,20 @@ const Chats = ({openChat, users}) => {
         setNewChats(chatsWithSort.concat(chatsWithoutMessages));
     }, [chats]);
 
-    useEffect(() => {
-        let newSortChats = myChats.filter(item => item.receiver.userName.toLowerCase().includes(searchUsername.toLowerCase()) || item.sender.userName.toLowerCase().includes(searchUsername.toLowerCase()));
-        let newUsers = users.filter(item => item.userName.toLowerCase().includes(searchUsername.toLowerCase()));
+    const searchUser = (user) => {
+        let newSortChats = myChats.filter(item => item.receiver.userName.toLowerCase().includes(user.toLowerCase()) || item.sender.userName.toLowerCase().includes(user.toLowerCase()));
+        let newUsers = users.filter(item => item.userName.toLowerCase().includes(user.toLowerCase()));
         setNewUsers(newUsers);
         setNewChats(newSortChats);
-    }, [searchUsername])
+    }
 
     const createChat = (receiver) => {
+        
         const data = {
             sender: user,
             receiver: receiver,
         }
+
         const config = {
             method: "post",
             url: "https://mercury-messanger.herokuapp.com/chats/",

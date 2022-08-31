@@ -17,6 +17,7 @@ const LogIn = ({users}) => {
 
     const checkPhoneAndPassword = () => {
         let user = users.filter(item => item.phone === phone && item.password === password);
+        console.log("user =", user)
         if (user[0]) {
             sessionStorage.setItem("id", user[0].id)
             navigate("chats");
@@ -54,14 +55,15 @@ const LogIn = ({users}) => {
                                 id="password" 
                                 placeholder="Enter your password" 
                                 value={password} 
-                                onChange={(e) => {setPassword(e.target.value); setError("")}} 
+                                onChange={(e) => {setPassword(e.target.value); setError("")}}
+                                onClick={checkPhoneAndPassword} 
                                 required
                             />
                             <i onClick={togglePassword}>{eye}</i>
                         </div>
                     </label><br />
                     <p className='error'>{error}</p>
-                    <button type="button" className="btn" onClick={checkPhoneAndPassword}>Sign In</button>
+                    <button type="submit" className="btn" onClick={checkPhoneAndPassword}>Sign In</button>
                 </form>
             </div>
             <div className="connection">
