@@ -4,7 +4,7 @@ import Loader from "../Loader";
 import Message from "./Message";
 import axios from "axios";
 
-const Messages = ({closeChat, users}) => {
+const Messages = ({closeChat, users, addedMessageReload}) => {
 
     const [text, setText] = useState('');
     const [chat, setChat] = useState([]);
@@ -41,7 +41,7 @@ const Messages = ({closeChat, users}) => {
         }).finally(() => {
             setTimeout(() => {
                 myRef.current.scrollIntoView({ block: 'end', behavior: 'auto' });
-            }, [600])
+            }, [400]);
             setLoading(false);
         });
     }
@@ -90,9 +90,9 @@ const Messages = ({closeChat, users}) => {
             axios(configAnswer).then(res => console.log(res))
             .catch(err => {navigate("/mercury-messenger/error", {state: {error: err.message}})}).finally(() => {
                 getMessagesFromBack();
+                addedMessageReload();
             });    
         }, 10000)
-        
     }
 
     const sendMessage = (e) => {
@@ -119,6 +119,7 @@ const Messages = ({closeChat, users}) => {
         }).finally(() => {
             getMessagesFromBack();
             setText("");
+            addedMessageReload();
             answerFromNick();
         });
     }

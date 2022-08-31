@@ -14,6 +14,7 @@ import Loader from "./components/Loader";
 function App() {
 
   const [toOpenChat, setToOpenChat ] = useState(0);
+  const [addedMessage, setAddedMessage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
 
@@ -39,6 +40,10 @@ function App() {
     setToOpenChat(0);
   }
 
+  const addedMessageReload = () => {
+    setAddedMessage(prevState => prevState + 1);
+  }
+
   return (
     <div>
       {loading ? <Loader /> 
@@ -48,9 +53,9 @@ function App() {
           <Route name="sign-up" path="sign-up" element={<SignUp users={users} />}/>
           <Route path="*" element={<NotFoundPage />}/>
         </Route>
-        <Route path="/mercury-messenger/chats" element={<MainContent openChat={openChat} toOpenChat={toOpenChat} users={users}/>}>
+        <Route path="/mercury-messenger/chats" element={<MainContent openChat={openChat} toOpenChat={toOpenChat} addedMessage={addedMessage} />}>
           <Route name="empty" index element={<EmptyWindow />}/>
-          <Route name="chat" path=":id" element={<Messages closeChat={closeChat} users={users}/>}/>
+          <Route name="chat" path=":id" element={<Messages closeChat={closeChat} users={users} addedMessageReload={addedMessageReload}/>}/>
         </Route>
         <Route path="/mercury-messenger/error" element={<AxiosError />}/>
       </Routes>}
