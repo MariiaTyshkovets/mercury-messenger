@@ -6,7 +6,7 @@ The project is designed to have a chats with friends. Programmed replies after s
 
 HTML5, SASS, JS, React, react-router-dom, hooks, axios, [Chuck Norris API](https://api.chucknorris.io/). 
 
-You can open this project in your browser: [Mercury](https://mariiatyshkovets.github.io/mercury-messenger/)
+You can open this project in your browser: [Mercury Messenger](https://mariiatyshkovets.github.io/mercury-messenger/).
 
 ## About me
 
