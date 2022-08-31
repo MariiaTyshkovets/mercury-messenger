@@ -17,7 +17,6 @@ const LogIn = ({users}) => {
 
     const checkPhoneAndPassword = () => {
         let user = users.filter(item => item.phone === phone && item.password === password);
-        console.log("user =", user)
         if (user[0]) {
             sessionStorage.setItem("id", user[0].id)
             navigate("chats");

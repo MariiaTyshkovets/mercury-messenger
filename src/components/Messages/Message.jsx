@@ -7,7 +7,8 @@ const Message = ({sender, idReceiver, body, sendTime}) => {
     let myDate = sendTime;
 
     if (myDate) {
-        const initialDateFnsDate = dateFns.date(myDate);
+        let date = new Date(myDate + "Z").toISOString();
+        const initialDateFnsDate = dateFns.date(date);
         myDate = dateFns.format(initialDateFnsDate, "keyboardDateTime");
     } 
 

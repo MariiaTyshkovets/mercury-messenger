@@ -17,7 +17,8 @@ const Chat = ({receiver, messages}) => {
     let myDate = messages.length === 0 ? "" : myMessages[0].sendTime;
 
     if (myDate) {
-        const initialDateFnsDate = dateFns.date(myDate);
+        let date = new Date(myDate + "Z").toISOString();
+        const initialDateFnsDate = dateFns.date(date);
         myDate = dateFns.format(initialDateFnsDate, "fullDate");
     } 
 
@@ -28,7 +29,7 @@ const Chat = ({receiver, messages}) => {
             </div>
             <div className="chat__info">
                 <h5>{receiver.userName}</h5>
-                {messages.length === 0 ? "" : <p>{messages[0].body}</p> }
+                {messages.length === 0 ? "" : <p>{myMessages[0].body}</p> }
             </div>
             <div className="chat__date">
                 <p> {myDate}</p>
