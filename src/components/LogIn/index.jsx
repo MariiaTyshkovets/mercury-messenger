@@ -15,7 +15,8 @@ const LogIn = ({users}) => {
     const navigate = useNavigate();
     const eye = <FontAwesomeIcon icon={faEye} />;
 
-    const checkPhoneAndPassword = () => {
+    const checkPhoneAndPassword = (e) => {
+        e.preventDefault();
         let user = users.filter(item => item.phone === phone && item.password === password);
         if (user[0]) {
             sessionStorage.setItem("id", user[0].id)
